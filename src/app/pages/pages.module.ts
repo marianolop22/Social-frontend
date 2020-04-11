@@ -8,8 +8,7 @@ import { PagesRoutingModule } from "./pages-routing.module";
 
 //Componentes del proyecto
 import { HomeComponent } from './home/home.component';
-import { SharedModule } from "src/app/shared/shared.module";
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
