@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { Post } from "src/app/models/post.model";
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -7,15 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
-  @Input() style: number;
-  @Input() author: string;
-  @Input() text: string;
-  @Input() published: string;
-
+  @Input() post: Post;
 
   constructor() { }
 
   ngOnInit(): void {
+
+    console.log ( this.post );
   }
 
 }

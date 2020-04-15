@@ -1,0 +1,5 @@
+<div *ngIf="submitted && control.invalid" class="invalid-feedback">
+    <div *ngIf="control.errors.required">{{required}}</div>
+    <div *ngIf="control.errors.pattern">{{pattern}}</div>
+    <div *ngIf="control.errors.compare">{{compare}}</div>
+</div>

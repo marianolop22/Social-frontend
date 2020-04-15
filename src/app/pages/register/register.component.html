@@ -34,16 +34,27 @@
                                     <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Tu Email</label>
-                                            <input class="form-control" [(ngModel)]="user.email" name="email" #email="ngModel" placeholder="" type="email" required>
+                                            <input class="form-control" [(ngModel)]="user.email" name="email" #email="ngModel" type="email"
+                                                    maxlength="90" 
+                                                    pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" 
+                                                    [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                                                    required>
+                                            <app-field-validator [control]=email [submitted]=f.submitted></app-field-validator>
                                         </div>
                                         <div class="form-group label-floating">
                                             <label class="control-label">Tu Contraseña</label>
-                                            <input class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="" type="password" required>
+                                            <input class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" type="password"
+                                                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,20}$"
+                                                    required>
+                                            <app-field-validator [control]=password [submitted]=f.submitted></app-field-validator>
                                         </div>
 
                                         <div class="form-group label-floating">
                                             <label class="control-label">Confirma Contraseña</label>
-                                            <input class="form-control" [(ngModel)]="usrRePassword" name="rePassword" #rePassword="ngModel" placeholder="" type="password" compare="password" required>
+                                            <input class="form-control" [(ngModel)]="usrRePassword" name="rePassword" #rePassword="ngModel" type="password"
+                                                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,20}$"
+                                                    compare="password" required>
+                                            <app-field-validator [control]=rePassword [submitted]=f.submitted [compare]="'La contraseñas deben ser iguales'"></app-field-validator>
                                         </div>                                        
                 
                                         <div class="remember">

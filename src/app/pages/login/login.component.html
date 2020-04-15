@@ -26,17 +26,29 @@
                 
                         <div class="tab-pane active" id="profile" role="tabpanel" data-mh="log-tab">
                             <div class="title h6">Ingresa a tu cuenta</div>
-                            <form class="content">
+                            <form class="content" (ngSubmit)="login( f )" #f="ngForm" novalidate   >
                                 <div class="row ml-0 mr-0">
-                                    <form  (ngSubmit)="login( f )" #f="ngForm">
+                                    
                                         <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group label-floating">
+                                            <div class="form-group label-floating" fieldValidator>
                                                 <label class="control-label">Tu Email</label>
-                                                <input class="form-control" [(ngModel)]="user.email" name="email" #email="ngModel" placeholder="" type="email" required>
+                                                <input class="form-control" 
+                                                        [(ngModel)]="user.email" name="email" #email="ngModel" 
+                                                        type="email" 
+                                                        required 
+                                                        maxlength="90" 
+                                                        pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" 
+                                                        [ngClass]="{ 'is-invalid': f.submitted && email.invalid }">
+                                                <app-field-validator [control]=email [submitted]=f.submitted></app-field-validator>
                                             </div>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Tu Contraseña</label>
-                                                <input class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="" type="password" required>
+                                                <input class="form-control" 
+                                                        [(ngModel)]="user.password" name="password" #password="ngModel" 
+                                                        type="password" 
+                                                        required 
+                                                        [ngClass]="{ 'is-invalid': f.submitted && password.invalid }">
+                                                <app-field-validator [control]=password [submitted]=f.submitted></app-field-validator>
                                             </div>
                     
                                             <div class="remember">
@@ -56,7 +68,7 @@
                                             <p>No tenes una cuenta? <a [routerLink]="[ '/registro']">Registrate ahora!</a> es muy simple!</p>
                                         </div>
 
-                                    </form>
+                                    
                                 </div>
                             </form>
                         </div>

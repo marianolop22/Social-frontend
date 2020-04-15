@@ -33,23 +33,23 @@ export class RegisterComponent extends Base implements OnInit {
 
   register ( f: NgForm){
 
+    if ( f.valid ) {
+
+      this._login.register ( this.user ).subscribe (
+        response => {
+          console.log ( response );
+        },
+        reject => {
+          console.log ( reject);
+        }
   
-    this._login.register ( this.user ).subscribe (
-      response => {
-        console.log ( response );
-      },
-      reject => {
-        console.log ( reject);
-      }
+  
+      ).add ( ()=> {
+        console.log("fin servicio");
+        
+      })
 
-
-    ).add ( ()=> {
-      console.log("fin servicio");
-      
-    })
-
-
-
+    }
   }
 
 }

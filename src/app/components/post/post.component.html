@@ -1,80 +1,15 @@
-<ng-container [ngSwitch]="style">
+<ng-container [ngSwitch]="post.style">
 
     <!-- Estilo de texto unicamente-->
     <article class="hentry post has-post-thumbnail" *ngSwitchCase=1>
 					
-        <div class="post__author author vcard inline-items">
-            <img src="assets/img/avatar3-sm.jpg" alt="author">
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
+        
+        <app-post-text [text]="post.text"></app-post-text>
     
-            <div class="author-date">
-                <a class="h6 post__author-name fn" href="#">{{author}}</a>
-                <div class="post__date">
-                    <time class="published">
-                        {{published}}
-                    </time>
-                </div>
-            </div>
+        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
     
-            <div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg>
-                <ul class="more-dropdown">
-                    <li>
-                        <a href="#">Edit Post</a>
-                    </li>
-                    <li>
-                        <a href="#">Delete Post</a>
-                    </li>
-                    <li>
-                        <a href="#">Turn Off Notifications</a>
-                    </li>
-                    <li>
-                        <a href="#">Select as Featured</a>
-                    </li>
-                </ul>
-            </div>
-    
-        </div>
-    
-        <p>
-            {{text}}
-        </p>
-    
-        <div class="post-additional-info inline-items">
-    
-            <a href="#" class="post-add-icon inline-items">
-                <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
-                <span>0 Likes</span>
-            </a>
-    
-            <div class="comments-shared">
-                <a href="#" class="post-add-icon inline-items">
-                    <svg class="olymp-speech-balloon-icon"><use xlink:href="#olymp-speech-balloon-icon"></use></svg>
-                    <span>0 Comments</span>
-                </a>
-    
-                <a href="#" class="post-add-icon inline-items">
-                    <svg class="olymp-share-icon"><use xlink:href="#olymp-share-icon"></use></svg>
-                    <span>2 Shares</span>
-                </a>
-            </div>
-    
-    
-        </div>
-    
-        <div class="control-block-button post-control-button">
-    
-            <a href="#" class="btn btn-control">
-                <svg class="olymp-like-post-icon"><use xlink:href="#olymp-like-post-icon"></use></svg>
-            </a>
-    
-            <a href="#" class="btn btn-control">
-                <svg class="olymp-comments-post-icon"><use xlink:href="#olymp-comments-post-icon"></use></svg>
-            </a>
-    
-            <a href="#" class="btn btn-control">
-                <svg class="olymp-share-icon"><use xlink:href="#olymp-share-icon"></use></svg>
-            </a>
-    
-        </div>
+        <app-post-action-tools></app-post-action-tools>
     
     </article>
 
@@ -82,118 +17,87 @@
 <!-- Estilo con texto y una imagen -->
 <article class="hentry post has-post-thumbnail" *ngSwitchCase=2>
 				
-    <div class="post__author author vcard inline-items">
-        <img src="assets/img/author-page.jpg" alt="author">
+    <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
 
-        <div class="author-date">
-            <a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
-            <div class="post__date">
-                <time class="published" datetime="2017-03-24T18:18">
-                    7 hours ago
-                </time>
-            </div>
-        </div>
+    <app-post-text [text]="post.text"></app-post-text>
 
-        <div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg>
-            <ul class="more-dropdown">
-                <li>
-                    <a href="#">Edit Post</a>
-                </li>
-                <li>
-                    <a href="#">Delete Post</a>
-                </li>
-                <li>
-                    <a href="#">Turn Off Notifications</a>
-                </li>
-                <li>
-                    <a href="#">Select as Featured</a>
-                </li>
-            </ul>
-        </div>
+    <app-post-image [image]="post.images[0]"></app-post-image>
 
-    </div>
+    <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
 
-    <p>Today we went with all the ofice guys to <a href="#">Dan’s Burgers and Fries</a> and had some of
-        the best burgers I have ever tasted, here’s the proof:
-    </p>
-
-    <div class="post-thumb">
-        <img src="assets/img/post__thumb2.jpg" alt="photo">
-    </div>
-
-    <div class="post-additional-info inline-items">
-
-        <a href="#" class="post-add-icon inline-items">
-            <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
-            <span>15</span>
-        </a>
-
-        <ul class="friends-harmonic">
-            <li>
-                <a href="#">
-                    <img src="assets/img/friend-harmonic5.jpg" alt="friend">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/friend-harmonic10.jpg" alt="friend">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/friend-harmonic7.jpg" alt="friend">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/friend-harmonic8.jpg" alt="friend">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/friend-harmonic2.jpg" alt="friend">
-                </a>
-            </li>
-        </ul>
-
-        <div class="names-people-likes">
-            <a href="#">Diana</a>, <a href="#">Nicholas</a> and
-            <br>47 more liked this
-        </div>
-
-
-        <div class="comments-shared">
-            <a href="#" class="post-add-icon inline-items">
-                <svg class="olymp-speech-balloon-icon"><use xlink:href="#olymp-speech-balloon-icon"></use></svg>
-                <span>16</span>
-            </a>
-
-            <a href="#" class="post-add-icon inline-items">
-                <svg class="olymp-share-icon"><use xlink:href="#olymp-share-icon"></use></svg>
-                <span>0</span>
-            </a>
-        </div>
-
-
-    </div>
-
-    <div class="control-block-button post-control-button">
-
-        <a href="#" class="btn btn-control">
-            <svg class="olymp-like-post-icon"><use xlink:href="#olymp-like-post-icon"></use></svg>
-        </a>
-
-        <a href="#" class="btn btn-control">
-            <svg class="olymp-comments-post-icon"><use xlink:href="#olymp-comments-post-icon"></use></svg>
-        </a>
-
-        <a href="#" class="btn btn-control">
-            <svg class="olymp-share-icon"><use xlink:href="#olymp-share-icon"></use></svg>
-        </a>
-
-    </div>
+    <app-post-action-tools></app-post-action-tools>
 
 </article>
+
+
+
+<!-- Estilo con texto y video-->
+    
+    <article class="hentry post video" *ngSwitchCase=3>
+    
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
+    
+        <app-post-text [text]="post.text"></app-post-text>
+    
+        <div class="post-video">
+            <div class="video-thumb f-none">
+                <img src="assets/img/video6.jpg" alt="photo">
+                <a href="https://youtube.com/watch?v=excVFQ2TWig" class="play-video">
+                    <svg class="olymp-play-icon"><use xlink:href="#olymp-play-icon"></use></svg>
+                </a>
+            </div>
+        </div>
+    
+        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
+    
+        <app-post-action-tools></app-post-action-tools>
+    
+    </article>
+    
+<!-- Estilo con imagen de cabecera y texto-->
+    <article class="hentry post has-post-thumbnail thumb-full-width" *ngSwitchCase=4>
+				
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
+    
+        <app-post-image [image]="post.images[0]"></app-post-image>
+
+    
+        <!-- <a href="#" class="h2 post-title">My Perfect Vacations in South America and Europe</a> -->
+    
+        <app-post-text [text]="post.text"></app-post-text>
+    
+        <a href="#" data-toggle="modal" data-target="#blog-post-popup" class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Read More</a>
+    
+        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
+    
+        <app-post-action-tools></app-post-action-tools>
+    
+    </article>
+    
+<!--Estilo con lista de imagenes-->
+    <article class="hentry post" *ngSwitchCase=5>
+				
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
+    
+        <app-post-text [text]="post.text"></app-post-text>
+    
+        <div class="post-block-photo js-zoom-gallery">
+            <a href="assets/img/post-photo1.jpg" class="half-width"><img src="assets/img/post-photo1.jpg" alt="photo"></a>
+            <a href="assets/img/post-photo2.jpg" class="half-width"><img src="assets/img/post-photo2.jpg" alt="photo"></a>
+            <a href="assets/img/post-photo3.jpg" class="col col-3-width"><img src="assets/img/post-photo3.jpg" alt="photo"></a>
+            <a href="assets/img/post-photo4.jpg" class="col col-3-width"><img src="assets/img/post-photo4.jpg" alt="photo"></a>
+            <a href="assets/img/post-photo5.jpg" class="more-photos col-3-width">
+                <img src="assets/img/post-photo5.jpg" alt="photo">
+                <span class="h2">+24</span>
+            </a>
+        </div>
+    
+        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
+    
+        <app-post-action-tools></app-post-action-tools>
+    
+    </article>
+
 
 
 

@@ -7,7 +7,8 @@ import { AuthInterceptor } from "./interceptor/interceptor";
 
 import {  
   LoginService,
-  UserService
+  UserService,
+  NewsService
 } from "./service.index";
 
 @NgModule({
@@ -19,6 +20,7 @@ import {
   providers: [
     LoginService,
     UserService,
+    NewsService,
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true

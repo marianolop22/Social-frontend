@@ -3297,7 +3297,7 @@ input, .form-control {
 .label-floating.with-icon .form-control, .label-floating.with-icon input, .label-floating.with-icon textarea {
   padding-left: 70px; }
 
-.form-group.has-error:after {
+/*.form-group.has-error:after {
   content: '\f00d';
   font-family: 'Font Awesome 5 Pro';
   font-weight: 900;
@@ -3313,7 +3313,7 @@ input, .form-control {
   font-size: 9px;
   right: 20px;
   top: 19px; }
-
+*/
 select.form-control {
   padding-left: .875rem; }
 

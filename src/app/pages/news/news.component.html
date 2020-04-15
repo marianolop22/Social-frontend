@@ -6,18 +6,12 @@
 		<div class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 			<div id="newsfeed-items-grid">
 
-				<div class="ui-block" *ngFor="let item of [1,2,3]">
+				<div class="ui-block" *ngFor="let item of postList">
 					<!-- Post -->
 					
-					<app-post [style]=1 [author]="'Mariano Lopez'" [published]="'19 hours ago'" [text]="'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.'"></app-post>
+					<app-post [post]="item" ></app-post>
 					
 				</div>
-
-				<div class="ui-block">
-					<app-post [style]=2 [author]="'Mariano Lopez'" [published]="'19 hours ago'" [text]="'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.'"></app-post>
-
-				</div>
-
 
 
 

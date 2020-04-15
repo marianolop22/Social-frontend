@@ -13,14 +13,12 @@ import { ClassModule } from "./class/class.module";
 import { ComponentsModule } from "./components/components.module";
 import { PagesModule } from "./pages/pages.module";
 import { ServicesModule } from "./services/services.module";
-//import { SharedModule } from "./shared/shared.module";
 
 //Variables de entorno
 import { environment } from "src/environments/environment";
 
 //Solo el login
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
 
 //Directivas
 import { DirectivesModule } from "./directives/directives.module";
@@ -28,8 +26,7 @@ import { DirectivesModule } from "./directives/directives.module";
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
