@@ -1,0 +1,33 @@
+<div class="post-block-photo js-zoom-gallery">
+
+    <ng-container *ngIf="imageList.length == 2">
+        <a [href]="imageList[0].source" class="half-width"><img [src]="imageList[0].source" alt="photo"></a>
+        <a [href]="imageList[1].source" class="half-width"><img [src]="imageList[1].source" alt="photo"></a>
+    </ng-container>
+
+
+    <ng-container *ngIf="imageList.length > 2 && imageList.length < 5">
+        <a [href]="imageList[0].source" class="col col-3-width"><img [src]="imageList[0].source" alt="photo"></a>
+        <a [href]="imageList[1].source" class="col col-3-width"><img [src]="imageList[1].source" alt="photo"></a>
+        <a [href]="imageList[2].source" class="col-3-width" [ngClass]="{'more-photos': imageList.length > 5}">
+            <img [src]="imageList[2].source" alt="photo">
+            <span class="h2" *ngIf="imageList.length == 4">+1</span>
+        </a>
+
+    </ng-container>
+
+    <ng-container *ngIf="imageList.length >= 5">
+        <a [href]="imageList[0].source" class="half-width"><img [src]="imageList[0].source" alt="photo"></a>
+        <a [href]="imageList[1].source" class="half-width"><img [src]="imageList[1].source" alt="photo"></a>
+        <a [href]="imageList[2].source" class="col col-3-width"><img [src]="imageList[2].source" alt="photo"></a>
+        <a [href]="imageList[3].source" class="col col-3-width"><img [src]="imageList[3].source" alt="photo"></a>
+        <a [href]="imageList[4].source" class=" col-3-width" [ngClass]="{'more-photos': imageList.length > 5}">
+            <img [src]="imageList[4].source" alt="photo">
+            <span class="h2" *ngIf="imageList.length > 5">+{{imageList.length - 5}}</span>
+        </a>
+
+    </ng-container>
+
+
+
+</div>

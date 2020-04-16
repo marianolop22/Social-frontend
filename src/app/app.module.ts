@@ -13,6 +13,7 @@ import { ClassModule } from "./class/class.module";
 import { ComponentsModule } from "./components/components.module";
 import { PagesModule } from "./pages/pages.module";
 import { ServicesModule } from "./services/services.module";
+import { DirectivesModule } from "./directives/directives.module";
 
 //Variables de entorno
 import { environment } from "src/environments/environment";
@@ -21,7 +22,7 @@ import { environment } from "src/environments/environment";
 import { LoginComponent } from './pages/login/login.component';
 
 //Directivas
-import { DirectivesModule } from "./directives/directives.module";
+
 
 @NgModule({
   declarations: [

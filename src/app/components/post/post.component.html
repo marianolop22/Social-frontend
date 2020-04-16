@@ -39,14 +39,7 @@
     
         <app-post-text [text]="post.text"></app-post-text>
     
-        <div class="post-video">
-            <div class="video-thumb f-none">
-                <img src="assets/img/video6.jpg" alt="photo">
-                <a href="https://youtube.com/watch?v=excVFQ2TWig" class="play-video">
-                    <svg class="olymp-play-icon"><use xlink:href="#olymp-play-icon"></use></svg>
-                </a>
-            </div>
-        </div>
+        <app-post-video [video]="post.images[0]" ></app-post-video>
     
         <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
     
@@ -81,16 +74,7 @@
     
         <app-post-text [text]="post.text"></app-post-text>
     
-        <div class="post-block-photo js-zoom-gallery">
-            <a href="assets/img/post-photo1.jpg" class="half-width"><img src="assets/img/post-photo1.jpg" alt="photo"></a>
-            <a href="assets/img/post-photo2.jpg" class="half-width"><img src="assets/img/post-photo2.jpg" alt="photo"></a>
-            <a href="assets/img/post-photo3.jpg" class="col col-3-width"><img src="assets/img/post-photo3.jpg" alt="photo"></a>
-            <a href="assets/img/post-photo4.jpg" class="col col-3-width"><img src="assets/img/post-photo4.jpg" alt="photo"></a>
-            <a href="assets/img/post-photo5.jpg" class="more-photos col-3-width">
-                <img src="assets/img/post-photo5.jpg" alt="photo">
-                <span class="h2">+24</span>
-            </a>
-        </div>
+        <app-post-image-list [imageList]="post.images"></app-post-image-list>
     
         <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
     

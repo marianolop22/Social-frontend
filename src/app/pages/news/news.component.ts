@@ -23,7 +23,6 @@ export class NewsComponent implements OnInit {
     this._news.getPostList ().subscribe (
       response => {
         this.postList = response;
-        console.log ( this.postList );
       },
       reject => {
         console.log (reject );

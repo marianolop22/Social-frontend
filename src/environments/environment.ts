@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlApi: 'http://192.241.149.81:8080/Social/rest/v1'
+  urlApi: 'http://api.micolegio.com.ar:8080/Social/rest/v1'
 };
 
 /*
