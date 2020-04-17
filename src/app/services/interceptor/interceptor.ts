@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
           sessionStorage.setItem ( 'token', event.headers.get('authorization') ); //actualizamos el token de sesion cuango viene
           
           let tmp = jwtHelper.decodeToken (event.headers.get('authorization'));
-          console.log( JSON.parse (   tmp.autorized));
+          
         }
       } ) , catchError ( ( event:any ) => {
         if ( (event.status == 404) || (event.status == 0) ) {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UserService } from "src/app/services/user.service";
+
 declare var $ :any;
 declare function init_plugins();
 declare function init_lib_plugins();
@@ -11,7 +13,9 @@ declare function init_lib_plugins();
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private _user: UserService
+  ) {
   }
 
   ngOnInit(): void {

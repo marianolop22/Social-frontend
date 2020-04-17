@@ -1,32 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 
-import { LoginService } from "src/app/services/login.service";
+import { LoginService, UserService, ErrorService } from "src/app/services/service.index";
 
 import { Base } from "src/app/class/base.class";
 import { User } from 'src/app/models/user.model';
-import { UserService } from "src/app/services/user.service";
+
+
+import { FadeIn, FadeOut } from "src/app/animatios/animations";
 
 declare function init_plugins();
 declare function init_lib_plugins();
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [
+    FadeIn,
+    FadeOut
+  ]
 })
-export class LoginComponent extends Base implements OnInit {
+export class LoginComponent extends Base implements OnInit, OnDestroy {
 
   public user: User;
 
   constructor(
     private _login: LoginService,
     private _user: UserService,
-    private router: Router
+    private router: Router,
+    public _error: ErrorService,
+    public ngZone: NgZone
   ) {
-    super();
-    this.user = new User();
+    super(_error, ngZone);
+  }
+  
+  ngOnDestroy(): void {
+    this.subMsg.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -36,6 +48,7 @@ export class LoginComponent extends Base implements OnInit {
       alert ( "Estás usando un explorador no compatible, por favor usa Firefox, Chrome o Safari" );
     }
 
+    this.user = new User();
     sessionStorage.clear();
     localStorage.clear();
     
@@ -51,21 +64,24 @@ export class LoginComponent extends Base implements OnInit {
         response => {
           this._user.setUser ( response.entity );
           this.router.navigate (['home']);
-        },
-        reject => {
-          console.log ( reject );
+
         }
+        // ,
+        // reject => {
+        //   this.errorMessage = reject.error.msg;
+        // }
       ).add ( () => { 
-        console.log ("termino el servicio");
+        
+
       });
     }
 
 
+  }
 
-
-
-
-
+  show () {
+    console.log('mensjae ', this.errorMessage);
+    
   }
 
 

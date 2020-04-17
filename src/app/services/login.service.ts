@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 import { environment } from "src/environments/environment";
 import { User } from "../models/user.model";
@@ -17,12 +18,13 @@ export class LoginService {
 
   public login (user:User): Observable<any> {
 
-    return this.http.post ( `${environment.urlApi}/users/loginUser`, { email: user.email, password: user.password} );
+    return this.http.post ( 
+      `${environment.urlApi}/users/loginUser`,  
+      { email: user.email, password: user.password} );
   }
 
   public register ( user:User ): Observable<any> {
     return this.http.post ( `${environment.urlApi}/users/registerUser`, { email: user.email, password: user.password} );
   }
-
 
 }

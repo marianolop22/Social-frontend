@@ -8,8 +8,10 @@ import { AuthInterceptor } from "./interceptor/interceptor";
 import {  
   LoginService,
   UserService,
-  NewsService
+  NewsService,
+  ErrorService
 } from "./service.index";
+
 
 @NgModule({
   declarations: [],
@@ -21,6 +23,7 @@ import {
     LoginService,
     UserService,
     NewsService,
+    ErrorService,
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
