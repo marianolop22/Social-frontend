@@ -41,21 +41,24 @@ export class RegisterComponent extends Base implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subMsg.unsubscribe();
+    this.subMsg$.unsubscribe();
   }
 
   register ( f: NgForm){
 
     if ( f.valid ) {
+      this.spin();
 
       this._login.register ( this.user ).subscribe (
         response => {
           console.log ( response );
         }  
       ).add ( ()=> {
-        
+        this.unSpin();
       })
 
+    } else {
+      this.unSpin();
     }
   }
 

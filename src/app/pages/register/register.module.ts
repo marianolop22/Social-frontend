@@ -9,6 +9,8 @@ import { FormsModule } from "@angular/forms";
 import { RegisterComponent } from './register.component';
 import { ComponentsModule } from "src/app/components/components.module";
 
+import { DirectivesModule } from "src/app/directives/directives.module";
+
 const routes: Routes = [
   { path: '', component: RegisterComponent }
 ]
@@ -22,7 +24,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    DirectivesModule
   ],
   exports: [
     RouterModule

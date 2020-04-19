@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorService {
 
-  public errorMessage:Subject<Error> = new Subject<Error>();
+  private errorMessage:Subject<Error> = new Subject<Error>();
 
   constructor() { }
+
+  public sendError ( error: Error ) {
+    this.errorMessage.next ( error );
+  }
+
+  public getError ():Observable<any> {
+    return this.errorMessage.asObservable();
+  }
+
 }

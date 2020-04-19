@@ -9,6 +9,7 @@ import { User } from 'src/app/models/user.model';
 
 
 import { FadeIn, FadeOut } from "src/app/animatios/animations";
+import { Subject, Observable } from 'rxjs';
 
 declare function init_plugins();
 declare function init_lib_plugins();
@@ -38,7 +39,7 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
   }
   
   ngOnDestroy(): void {
-    this.subMsg.unsubscribe();
+    this.subMsg$.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -59,31 +60,49 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
 
   public login ( f: NgForm) {
 
+    console.log ('hice clic');
+
     if ( f.valid ) {
-      this._login.login ( this.user ).subscribe (
-        response => {
-          this._user.setUser ( response.entity );
-          this.router.navigate (['home']);
+      this.spin();
 
-        }
-        // ,
-        // reject => {
-        //   this.errorMessage = reject.error.msg;
-        // }
-      ).add ( () => { 
+      setTimeout(() => {
         
+        this._login.login ( this.user ).subscribe (
+          response => {
+            this._user.setUser ( response.entity );
+            this.router.navigate (['home']);
+  
+          }
+          // ,
+          // reject => {
+          //   this.errorMessage = reject.error.msg;
+          // }
+        ).add ( () => { 
+          
+          this.unSpin();
+        });
+      }, 2000);
 
-      });
+    } else {
+      this.unSpin();
     }
 
 
   }
 
+  
+
   show () {
-    console.log('mensjae ', this.errorMessage);
+
+    console.log('hice click');
+    //this.spin.next ( true );
+    //this.spin.next ( true );
+
+    this.spin();
     
+    setTimeout(() => {
+      this.unSpin();
+    }, 2000);
   }
-
-
 
 }
