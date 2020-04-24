@@ -47,19 +47,17 @@ export class RegisterComponent extends Base implements OnInit, OnDestroy {
   register ( f: NgForm){
 
     if ( f.valid ) {
-      this.spin();
+      this.busy();
 
       this._login.register ( this.user ).subscribe (
         response => {
           console.log ( response );
         }  
       ).add ( ()=> {
-        this.unSpin();
+        this.notBusy();
       })
 
-    } else {
-      this.unSpin();
-    }
+    } 
   }
 
 }

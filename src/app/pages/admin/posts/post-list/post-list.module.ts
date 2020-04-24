@@ -1,27 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Routes, RouterModule } from '@angular/router';
-import { NewsComponent } from './news.component';
 
+import { PostListComponent } from "./post-list.component";
+
+import { SharedModule } from "src/app/shared/shared.module";
 import { ComponentsModule } from "src/app/components/components.module";
-import { SharedModule  } from "src/app/shared/shared.module";
 
 const routes: Routes = [
-  { path: '', component: NewsComponent }
+  { path: '', component: PostListComponent }
 ]
 
 @NgModule({
   declarations: [
-    NewsComponent
+    PostListComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ComponentsModule,
-    SharedModule
+    SharedModule,
+    ComponentsModule
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+  ]
 })
-export class NewsModule { }
-
+export class PostListModule { }

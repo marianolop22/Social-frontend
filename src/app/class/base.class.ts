@@ -37,14 +37,15 @@ export abstract class Base implements OnDestroy {
         //this.errMsg$ = of (null);
     }
 
-    public spin () {
-        this.loading = true;
+    public busy () {
+        this.spin$.next ( true );
+        //this.loading = true;
 
     }
 
-    public unSpin () {
+    public notBusy () {
         this.spin$.next ( false );
-        this.loading = false;
+        //this.loading = false;
     }
 
 }

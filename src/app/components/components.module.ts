@@ -11,6 +11,7 @@ import { PostVideoComponent } from './post/postFields/post-video/post-video.comp
 
 import { PipesModule } from "src/app/pipes/pipes.module";
 import { PostImageListComponent } from './post/postFields/post-image-list/post-image-list.component';
+import { PostItemListComponent } from './post-item-list/post-item-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PostImageListComponent } from './post/postFields/post-image-list/post-i
     PostActionToolsComponent,
     PostImageComponent,
     PostVideoComponent,
-    PostImageListComponent
+    PostImageListComponent,
+    PostItemListComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { PostImageListComponent } from './post/postFields/post-image-list/post-i
     PostActionToolsComponent,
     PostImageComponent,
     PostVideoComponent,
-    PostImageListComponent
+    PostImageListComponent,
+    PostItemListComponent
   ]
 })
 export class ComponentsModule { }

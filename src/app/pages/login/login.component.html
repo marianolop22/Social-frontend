@@ -27,7 +27,7 @@
                         <div class="tab-pane active" id="profile" role="tabpanel" data-mh="log-tab">
                             <div class="title h6">Ingresa a tu cuenta</div>
                             <form class="content" (ngSubmit)="login( f )" #f="ngForm" novalidate   >
-                                <fieldset [disabled]="loading">
+                                <fieldset [disabled]="(spin$|async)">
                                     <div class="row ml-0 mr-0">
                                         
                                             <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">

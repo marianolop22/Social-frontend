@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from "src/app/services/news.service";
 import { Post } from "src/app/models/post.model";
 
-
+declare function init_plugins();
+declare function init_lib_plugins();
 
 @Component({
   selector: 'app-news',
@@ -32,7 +33,8 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    init_plugins();
+    init_lib_plugins();
 
 
   }

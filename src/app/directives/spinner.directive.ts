@@ -4,35 +4,47 @@ import { take } from 'rxjs/operators';
 
 @Directive({
   selector: '[spinner]',
-  host: {
-    '(click)': 'click()'
-   }
+  // host: {
+  //   '(click)': 'click()'
+  //  }
 })
-export class SpinnerDirective {
+export class SpinnerDirective implements OnDestroy {
   
-  @Input() spinner:Observable<boolean>;
+  @Input() spinner:Subject<boolean>;
 
   constructor( 
-    //private renderer: Renderer2,
     private el:ElementRef) {
   }
 
-  // @HostListener('click')
-  // onClick() {
+  ngOnDestroy(): void {
+    
+    try {
+      this.spinner.unsubscribe();
+    } catch (error) {
+      console.log ('Error al desuscribir', error);
+    }
+  }
+
+  @HostListener('click')
   click() {
 
-    this.el.nativeElement.innerHTML = this.el.nativeElement.textContent + " " + '<i class="fad fa-circle-notch fa-spin"></i>';
+    if ( this.spinner.observers.length < 2 ) {
 
-    this.spinner
-    .pipe ( take(1) )
-    .subscribe ( observer => {
-      // this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
-      this.el.nativeElement.innerHTML = this.el.nativeElement.textContent;
-      
-    });
+      this.spinner
+      .pipe ( take(2) )
+      .subscribe ( observer => {
+        // this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
+  
+        if (observer) {
+          this.el.nativeElement.innerHTML = this.el.nativeElement.textContent + " " + '<i class="fad fa-circle-notch fa-spin"></i>';
+        } else {
+  
+          this.el.nativeElement.innerHTML = this.el.nativeElement.textContent;
+        }
+        
+      });
 
-    //this.renderer.setAttribute(this.el.nativeElement, 'disabled', 'true');
-
+    } 
   }
 
 }

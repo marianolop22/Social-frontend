@@ -60,10 +60,8 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
 
   public login ( f: NgForm) {
 
-    console.log ('hice clic');
-
     if ( f.valid ) {
-      this.spin();
+      this.busy();
 
       setTimeout(() => {
         
@@ -79,29 +77,23 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
           // }
         ).add ( () => { 
           
-          this.unSpin();
+          this.notBusy();
         });
       }, 2000);
 
-    } else {
-      this.unSpin();
     }
-
 
   }
 
-  
-
   show () {
-
     console.log('hice click');
     //this.spin.next ( true );
     //this.spin.next ( true );
 
-    this.spin();
+    this.busy();
     
     setTimeout(() => {
-      this.unSpin();
+      this.notBusy();
     }, 2000);
   }
 

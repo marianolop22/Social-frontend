@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBArComponent } from './side-bar/side-bar.component';
+import { BackToTopComponent } from './back-to-top/back-to-top.component';
 
 
 @NgModule({
   declarations: [
     NavBarComponent,
-    SideBArComponent
+    SideBArComponent,
+    BackToTopComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { SideBArComponent } from './side-bar/side-bar.component';
   ],
   exports: [
     NavBarComponent,
-    SideBArComponent
+    SideBArComponent,
+    BackToTopComponent
   ]
 })
 export class SharedModule { }

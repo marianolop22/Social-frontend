@@ -1,7 +1,7 @@
 <div class="fixed-sidebar">
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-		<a href="02-ProfilePage.html" class="logo">
+		<a [routerLink]="[ 'noticias' ]" class="logo">
 			<div class="img-wrap">
 				<img src="assets/img/logo.png" alt="Olympus">
 			</div>
@@ -15,8 +15,8 @@
 					</a>
 				</li>
 				<li>
-					<a href="03-Newsfeed.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="#olymp-newsfeed-icon"></use></svg>
+					<a [routerLink]="[ 'admin', 'listanoticias' ]">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="Adm. Noticias"><use xlink:href="#olymp-newsfeed-icon"></use></svg>
 					</a>
 				</li>
 				<li>
@@ -87,9 +87,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="03-Newsfeed.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="#olymp-newsfeed-icon"></use></svg>
-						<span class="left-menu-title">Newsfeed</span>
+					<a [routerLink]="[ 'admin', 'listanoticias' ]">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="Adm Noticias"><use xlink:href="#olymp-newsfeed-icon"></use></svg>
+						<span class="left-menu-title">Adm Noticias</span>
 					</a>
 				</li>
 				<li>
@@ -166,6 +166,8 @@
 		</div>
 	</div>
 </div>
+
+
 <div class="fixed-sidebar fixed-sidebar-responsive">
 
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
@@ -214,9 +216,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="mobile-index.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="#olymp-newsfeed-icon"></use></svg>
-						<span class="left-menu-title">Newsfeed</span>
+					<a [routerLink]="[ 'admin', 'listanoticias' ]">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="Admi Noticias"><use xlink:href="#olymp-newsfeed-icon"></use></svg>
+						<span class="left-menu-title">Adm Noticias</span>
 					</a>
 				</li>
 				<li>

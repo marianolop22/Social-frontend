@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { UserService } from "src/app/services/user.service";
 
-declare var $ :any;
-declare function init_plugins();
-declare function init_lib_plugins();
 
 @Component({
   selector: 'app-home',
@@ -23,8 +19,6 @@ export class HomeComponent implements OnInit {
     //   $('[data-toggle="tooltip"]').tooltip();
     // }, 500);
 
-    init_plugins();
-    init_lib_plugins();
 
   }
 
