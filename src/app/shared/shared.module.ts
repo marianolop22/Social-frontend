@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { SideBArComponent } from './side-bar/side-bar.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 import { BackToTopComponent } from './back-to-top/back-to-top.component';
 
 
 @NgModule({
   declarations: [
     NavBarComponent,
-    SideBArComponent,
+    SideBarComponent,
     BackToTopComponent
   ],
   imports: [
@@ -19,7 +19,7 @@ import { BackToTopComponent } from './back-to-top/back-to-top.component';
   ],
   exports: [
     NavBarComponent,
-    SideBArComponent,
+    SideBarComponent,
     BackToTopComponent
   ]
 })

@@ -2,17 +2,16 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 
-import { LoginService, UserService, ErrorService } from "src/app/services/service.index";
+import { LoginService, UserService, ErrorService, LoadJSService } from "src/app/services/service.index";
 
 import { Base } from "src/app/class/base.class";
 import { User } from 'src/app/models/user.model';
 
 
 import { FadeIn, FadeOut } from "src/app/animatios/animations";
-import { Subject, Observable } from 'rxjs';
 
-declare function init_plugins();
-declare function init_lib_plugins();
+
+declare var CRUMINA:any; //  init_plugins();
 
 
 @Component({
@@ -53,8 +52,11 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
     sessionStorage.clear();
     localStorage.clear();
     
-    init_plugins();
-    init_lib_plugins();
+    CRUMINA.init_plugins();
+    CRUMINA.init_lib_plugins();
+
+
+
 
   }
 

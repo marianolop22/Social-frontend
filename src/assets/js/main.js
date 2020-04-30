@@ -1,6 +1,6 @@
 //Global var to avoid any conflicts
 var CRUMINA = {};
-function init_plugins() {
+// function init_plugins() {
 (function ($) {
 
 	// USE STRICT
@@ -28,12 +28,13 @@ function init_plugins() {
 	};
 
 	//Scroll to top.
-        jQuery('.back-to-top').on('click', function () {
-            $('html,body').animate({
-                scrollTop: 0
-            }, 1200);
-            return false;
-        });
+	//M.A.L. comento esta linea porque lo puse como funcion
+        // jQuery('.back-to-top').on('click', function () {
+        //     $('html,body').animate({
+        //         scrollTop: 0
+        //     }, 1200);
+        //     return false;
+        // });
 
 
     /* -----------------------
@@ -104,30 +105,31 @@ function init_plugins() {
     });
 
 	// Toggle aside panels
-	$(".js-sidebar-open").on('click', function () {
-		var mobileWidthApp = $('body').outerWidth();
-		if(mobileWidthApp <= 560) {
-			$(this).closest('body').find('.popup-chat-responsive').removeClass('open-chat');
-		}
+	//M.A.L. comento esta linea porque lo puse como funcion
+	// $(".js-sidebar-open").on('click', function () {
+	// 	var mobileWidthApp = $('body').outerWidth();
+	// 	if(mobileWidthApp <= 560) {
+	// 		$(this).closest('body').find('.popup-chat-responsive').removeClass('open-chat');
+	// 	}
 
-        $(this).toggleClass('active');
-        $(this).closest($sidebar).toggleClass('open');
-        return false;
-    });
+    //     $(this).toggleClass('active');
+    //     $(this).closest($sidebar).toggleClass('open');
+    //     return false;
+    // });
 
 	// Close on "Esc" click
-    $window.keydown(function (eventObject) {
-        if (eventObject.which == 27 && $sidebar.is(':visible')) {
-            $sidebar.removeClass('open');
-        }
-    });
+    // $window.keydown(function (eventObject) {
+    //     if (eventObject.which == 27 && $sidebar.is(':visible')) {
+    //         $sidebar.removeClass('open');
+    //     }
+    // });
 
-    // Close on click outside elements.
-    $document.on('click', function (event) {
-        if (!$(event.target).closest($sidebar).length && $sidebar.is(':visible')) {
-            $sidebar.removeClass('open');
-        }
-    });
+    // // Close on click outside elements.
+    // $document.on('click', function (event) {
+    //     if (!$(event.target).closest($sidebar).length && $sidebar.is(':visible')) {
+    //         $sidebar.removeClass('open');
+    //     }
+    // });
 
     // Toggle inline popups
 
@@ -345,8 +347,9 @@ function init_plugins() {
 	/* -----------------------------
 	 * On DOM ready functions
 	 * ---------------------------*/
-
-	$document.ready(function () {
+	
+	//$document.ready(function () {
+	CRUMINA.init_plugins = function () {
 
 		//CRUMINA.preloader();
 
@@ -386,6 +389,7 @@ function init_plugins() {
 
 		CRUMINA.responsive.init();
 
-	});
+	}
+	//);
 })(jQuery);
-}
+//}

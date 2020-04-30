@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PostTextComponent implements OnInit {
 
   @Input() text: string;
+  @Input() tittle: string = null;
 
   constructor() { }
 

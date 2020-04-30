@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from "src/app/services/news.service";
 import { Post } from "src/app/models/post.model";
 
-declare function init_plugins();
-declare function init_lib_plugins();
+declare var CRUMINA:any; //  init_plugins();
 
 @Component({
   selector: 'app-news',
@@ -33,9 +32,11 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    init_plugins();
-    init_lib_plugins();
+    // init_plugins();
+    // init_lib_plugins();
 
+    CRUMINA.init_plugins();
+    CRUMINA.init_lib_plugins();
 
   }
 

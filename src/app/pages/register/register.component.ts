@@ -8,8 +8,7 @@ import { LoginService } from "src/app/services/login.service";
 import { FadeOut, FadeIn } from "src/app/animatios/animations";
 import { ErrorService } from 'src/app/services/error.service';
 
-declare function init_plugins();
-declare function init_lib_plugins();
+declare var CRUMINA: any;
 
 @Component({
   selector: 'app-register',
@@ -35,8 +34,8 @@ export class RegisterComponent extends Base implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    init_plugins();
-    init_lib_plugins();
+    CRUMINA.init_plugins();
+    CRUMINA.init_lib_plugins();
 
   }
 

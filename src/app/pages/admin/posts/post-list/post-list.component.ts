@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
-declare function init_plugins();
-declare function init_lib_plugins();
+declare var CRUMINA:any; //  init_plugins();
 
 @Component({
   selector: 'app-post-list',
@@ -10,12 +10,18 @@ declare function init_lib_plugins();
 })
 export class PostListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    CRUMINA.init_plugins();
+    CRUMINA.init_lib_plugins();
+  }
 
-    init_plugins();
-    init_lib_plugins();
+  goToPage () {
+    this.router.navigate ( ['../crear'], { relativeTo:  this.route } );
 
   }
 

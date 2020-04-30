@@ -26,7 +26,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/main.js",
+              "src/assets/js/libs-init/libs-init.js"
+            ]
           },
           "configurations": {
             "production": {

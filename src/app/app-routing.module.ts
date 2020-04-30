@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from "./pages/login/login.component";
-//import { RegisterComponent } from "./pages/register/register.component";
 
 const routes: Routes = [
   { path: 'ingreso', component: LoginComponent },
@@ -11,7 +10,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [
+    RouterModule.forRoot(
+      routes, {
+        useHash: true, 
+        relativeLinkResolution: 'corrected' //Esta configuracion es para que funcione relativeTo con lazyload
+      }   
+  )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

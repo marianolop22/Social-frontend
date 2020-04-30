@@ -4,7 +4,7 @@
      * Documentation about used plugin:
      * https://v4-alpha.getbootstrap.com/getting-started/introduction/
 * ---------------------------*/
-function init_lib_plugins() {
+CRUMINA.init_lib_plugins = function() {
 CRUMINA.Bootstrap = function () {
 	//  Activate the Tooltips
 	$('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
@@ -781,4 +781,5 @@ CRUMINA.maps = {
 
 $(document).ready(function () {
 	CRUMINA.maps.init();
-});}
+});
+}

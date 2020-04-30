@@ -3,14 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from "./home/home.component";
 import { AuthGuardService } from "src/app/services/auth/auth-guard.service";
 
-
 const routes: Routes = [
   { path: 'home', component: HomeComponent, children:[
     { path: '', pathMatch: 'full', redirectTo: 'noticias'},
     { path:'noticias', loadChildren: () => import('./news/news.module').then(m => m.NewsModule) },
-    //{ path:'admin/listanoticias', loadChildren: () => import('./admin/posts/post-list/post-list.module').then(m => m.PostListModule) },
     {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)  }
-
+    //{path: 'admin', component: AdminModule  } //
 
     
   ], canActivate: [ AuthGuardService ], /*canActivateChild: [ AuthGuardService ],*/ data:{ roles:'READER' }, runGuardsAndResolvers: 'always' },

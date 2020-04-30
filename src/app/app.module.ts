@@ -40,7 +40,7 @@ import { HttpErrorsHandler } from "src/app/class/error-handler.class";
     ComponentsModule,
     PagesModule,
     ServicesModule,
-    DirectivesModule,
+    DirectivesModule
     //SharedModule
   ],
   providers: [

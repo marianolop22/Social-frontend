@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 //admin modulo
-//import { AdminModule } from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     BrowserModule,
     FormsModule,
     PagesRoutingModule,
-    SharedModule,
-   // AdminModule
+    SharedModule
   ]
 })
 export class PagesModule { }
