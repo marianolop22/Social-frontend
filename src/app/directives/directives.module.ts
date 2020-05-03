@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { CompareValidatorDirective } from "./compare-validator.directive";
 import { SpinnerDirective } from './spinner.directive';
+import { DndDirective } from './dnd.directive';
 
 @NgModule({
   declarations: [
     CompareValidatorDirective,
-    SpinnerDirective
+    SpinnerDirective,
+    DndDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
     CompareValidatorDirective,
-    SpinnerDirective
+    SpinnerDirective,
+    DndDirective
   ]
 })
 export class DirectivesModule { }

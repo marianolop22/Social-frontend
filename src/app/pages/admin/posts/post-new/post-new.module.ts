@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PostNewComponent } from "./post-new.component";
-
+import { DirectivesModule } from "src/app/directives/directives.module";
 
 const routes: Routes = [
   { path: 'crear', component: PostNewComponent },
@@ -18,7 +18,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    DirectivesModule
   ],
   exports: [
     RouterModule

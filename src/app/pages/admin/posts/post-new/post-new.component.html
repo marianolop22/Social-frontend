@@ -48,31 +48,49 @@
 								</div>
 							</div>
 
+							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+								<div class="form-group label-floating is-select">
+									<label class="control-label">Grupos de Distribución</label>
+									<select class="selectpicker form-control" multiple data-none-selected-text='Sin Eleccion'>
+										<option value="TO">Grupo 1</option>
+										<option value="TI">Grupo 2</option>
+										<option value="TV">Grupo 3</option>
+										<option value="IT">Grupo 4</option>
+									</select>
+								</div>
+							</div>							
+
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div class="form-group friend-item friend-groups create-group" data-mh="friend-groups-item" style="height: 391px;">
-									<div class="content">
-										<label class=" cPointer">
+								<div appDnd (fileDropped)="onFileDropped($event)" class="form-group friend-item friend-groups create-group main-image-size" data-mh="friend-groups-item" [ngClass]="{'uploadable-image':!mainImage }" [ngStyle]="{'height': !mainImage ? '381px' : '' }">
+									<!-- Este era el original [ngStyle]="{'padding-top': !mainImage ? '42.5%' : '0' } -->
+									<div class="content" *ngIf="!mainImage">
+										
+										<label class=" cPointer" >
 											<div>
-												<a class="  btn btn-control bg-blue mb-0">
+												<a class="btn btn-control bg-blue mb-0">
 													<svg class="olymp-plus-icon"><use xlink:href="#olymp-plus-icon"></use></svg>
 												</a>	
-												<input multiple hidden type="file" #fileInput name="file" accept="image/*" />
+												<input multiple hidden type="file" #fileInputMain name="fileMain" accept="image/*" (click)="fileInputMain.value = null;" value="" (change)="getFile( $event );"/>
 											</div>
 										</label>
 								
 										<div class="author-content">
 											<span class="h5 author-name">Imagen</span>
-											<div class="country">Podes Adjuntar 1 imagen</div>
+											<div class="country">Imagen Superior</div>
+										</div>
+									</div>
+
+									<div class="image-delete" *ngIf="mainImage">
+										<img [src]="mainImage" alt="" width="100%">
+										<a (click)="delete ()" type="button" class="btn btn-danger button-delete">
+											<i class="fal fa-trash-alt fa-2x" style="color: white; vertical-align: super;" ></i>
+										</a>
+										<div class="overlay overlay-dark">
+
 										</div>
 									</div>
 								</div>
 							</div>
-
-
-
-
-
-
 
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<div class="form-group label-floating">
@@ -87,12 +105,75 @@
 									<label class="control-label">Texto</label>
 									<textarea class="form-control" style="height: 240px" placeholder="" value=""></textarea>
 								</div>
-					
-								<!-- <div class="form-group">
-									<input class="form-control" type="text" placeholder="Choose Optional Tags">
-								</div> -->
 							</div>
-					
+
+							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+								<div class="form-group label-floating">
+									<label class="control-label">Link Video</label>
+									<input class="form-control" type="text" placeholder="" value="">
+								</div>
+							</div>							
+
+							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+								<div class="ui-block border-0">
+									<div class="ui-block-title border-0 pl-1 pt-0">
+										<label class="control-label">Agregar Imágenes:</label>
+										<!-- <h6 class="title title-image">Agregar Imágenes -->
+
+
+											<!-- <label class="cPointer">
+												<div>
+													<i class="fad fa-plus-circle fa-lg" style="--fa-secondary-opacity: 1;--fa-primary-color: white; --fa-secondary-color: #38a9ff;"></i>
+													<input multiple hidden type="file" #fileInput name="file" accept="image/*" />
+												</div>
+											</label> -->
+										<!-- </h6> -->
+
+									</div>
+									<div class="ui-block-content thumb-nail-list">
+										<ul class="widget w-last-photo">
+											<li class="li-width " *ngFor="let item of imageList">
+												<div class="col col-12 p-0 m-0">
+
+
+													<div class="image-delete">
+														
+														<img src="assets/testImg/post-photo3.jpg" alt="photo">
+														<a (click)="delete ()" type="button" class="btn btn-danger button-delete">
+															<i class="fal fa-trash-alt fa-2x" style="color: white; vertical-align: super;" ></i>
+															<!-- ; margin-left: -3px; -->
+														</a>
+														<div class="overlay overlay-dark">
+															
+														</div>
+														
+													</div>
+												</div>
+
+											</li>
+
+											<li class="li-width" *ngIf="imageList.length < 10">
+												<label appDnd (fileDropped)="onFileDropped($event)" class="cPointer" style="width: inherit;">
+													<div class="thumb-nail-picture">
+														<div  class="thumb-nail-content" >
+															<i class="fad fa-plus-circle fa-lg d-inline-block" style="--fa-secondary-opacity: 1;--fa-primary-color: white; --fa-secondary-color: #38a9ff;"></i>
+															<br>
+															<a class="d-inline-block">Agregar Foto</a>
+														</div>
+													</div>
+													<input multiple hidden type="file" #fileInput name="file" accept="image/*" (click)="fileInput.value = null;" value="" (change)="getFile( $event );" />
+												</label>
+
+											</li>
+
+
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
 							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 								<a href="#" class="btn btn-secondary btn-lg full-width">Cancelar</a>
 							</div>
@@ -115,7 +196,6 @@
 				<div class="ui-block-content">
 
 					
-					<!-- Widget Featured Topics -->
 					
 					<ul class="widget w-featured-topics">
 						<li>
@@ -141,7 +221,6 @@
 						</li>
 					</ul>
 					
-					<!-- ... end Widget Featured Topics -->
 				</div>
 			</div>
 
