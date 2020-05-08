@@ -8,29 +8,49 @@
     height: 120px;
 }
 
+/*  */
 .main-image-size {
     width: 100%;
     position: relative;
 }
 
+/*Sobreescribo el original para redondear el borde*/
+.overlay {
+    border-radius: 5px;
+}
 
+/* Este es el cuadradito punteado para subir imágenes en la lista de imagenes*/
 .thumb-nail-picture {
     border-color: #38a9ff;
     cursor: pointer;
     border-width: 1px;
+    border-radius: 5px;
     border-style: dashed;
-    height: 110px;
+    height: 116px;
     display: flex;
     align-items: center;
 }
 
+.thumb-nail-picture:hover {
+    border-style: solid;
+    border-width: 2px;
+}
+
+/* Se sobreescribe este estilo para esta pagina */
 .create-group {
     border-color: #38a9ff;
     border-width: 1px;
-    border-style: dashed;
 }
 
+.solid-border {
+    border: none;
+}
 
+img {
+    vertical-align: -webkit-baseline-middle;
+}
+
+/* Es solo para marcar el borde más ancho cuando pasa el mouse por arriva */
 .uploadable-image:hover {
     border-style: solid;
     border-width: 2px;
@@ -38,11 +58,6 @@
 
 
 
-
-.thumb-nail-picture:hover {
-    border-style: solid;
-    border-width: 2px;
-}
 
 .thumb-nail-content {
     width: 100%;
@@ -53,9 +68,9 @@
     padding: inherit;
     overflow-x: auto;
 }
-    .thumb-nail-list    ul {
+    .thumb-nail-list ul {
         overflow-x: scroll;
-        height: 110px;
+        height: 120px;
         width: max-content;
     }
 
@@ -66,10 +81,6 @@
 
 
 .image-delete:hover{
-    opacity: 1;
-}
-
-.image-delete-sm:hover{
     opacity: 1;
 }
 
@@ -125,7 +136,9 @@
     outline: none;
 }
 
-
+/* .image-delete-sm:hover{
+    opacity: 1;
+} */
 
 
 

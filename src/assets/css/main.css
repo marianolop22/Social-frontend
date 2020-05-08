@@ -4802,7 +4802,7 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
 /*------------- #REGISTRATION-LOGIN-FORM --------------*/
 .registration-login-form {
   border: 1px solid #e6ecf5;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px; /*M.A.L. se redondean todos los bordes*/
   background-color: #fff;
   overflow: hidden;
   position: relative;

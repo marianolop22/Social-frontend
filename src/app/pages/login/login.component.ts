@@ -26,6 +26,7 @@ declare var CRUMINA:any; //  init_plugins();
 export class LoginComponent extends Base implements OnInit, OnDestroy {
 
   public user: User;
+  public submitted: boolean = false;
 
   constructor(
     private _login: LoginService,
@@ -65,7 +66,6 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
     if ( f.valid ) {
       this.busy();
 
-      setTimeout(() => {
         
         this._login.login ( this.user ).subscribe (
           response => {
@@ -73,30 +73,23 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
             this.router.navigate (['home']);
   
           }
-          // ,
-          // reject => {
-          //   this.errorMessage = reject.error.msg;
-          // }
         ).add ( () => { 
           
           this.notBusy();
         });
-      }, 2000);
 
     }
 
   }
 
-  show () {
+  show (f: NgForm) {
     console.log('hice click');
     //this.spin.next ( true );
     //this.spin.next ( true );
 
-    this.busy();
+    console.log('estado del formulario ', f.submitted  == false );
     
-    setTimeout(() => {
-      this.notBusy();
-    }, 2000);
+
   }
 
 }

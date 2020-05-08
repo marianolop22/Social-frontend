@@ -61,7 +61,9 @@
 							</div>							
 
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div appDnd (fileDropped)="onFileDropped($event)" class="form-group friend-item friend-groups create-group main-image-size" data-mh="friend-groups-item" [ngClass]="{'uploadable-image':!mainImage }" [ngStyle]="{'height': !mainImage ? '381px' : '' }">
+								<div appDnd (fileDropped)="onFileDropped($event)" class="form-group friend-item friend-groups create-group main-image-size" data-mh="friend-groups-item" 
+									[ngClass]="{'uploadable-image':!mainImage, 'solid-border':mainImage }" 
+									[ngStyle]="{'height': !mainImage ? '381px' : '' }">
 									<!-- Este era el original [ngStyle]="{'padding-top': !mainImage ? '42.5%' : '0' } -->
 									<div class="content" *ngIf="!mainImage">
 										
@@ -70,7 +72,7 @@
 												<a class="btn btn-control bg-blue mb-0">
 													<svg class="olymp-plus-icon"><use xlink:href="#olymp-plus-icon"></use></svg>
 												</a>	
-												<input multiple hidden type="file" #fileInputMain name="fileMain" accept="image/*" (click)="fileInputMain.value = null;" value="" (change)="getFile( $event );"/>
+												<input hidden type="file" #fileInputMain name="fileMain" accept="image/*" (click)="fileInputMain.value = null;" value="" (change)="getFile( $event, 'main' );"/>
 											</div>
 										</label>
 								
@@ -82,7 +84,7 @@
 
 									<div class="image-delete" *ngIf="mainImage">
 										<img [src]="mainImage" alt="" width="100%">
-										<a (click)="delete ()" type="button" class="btn btn-danger button-delete">
+										<a (click)="delete (-1)" type="button" class="btn btn-danger button-delete">
 											<i class="fal fa-trash-alt fa-2x" style="color: white; vertical-align: super;" ></i>
 										</a>
 										<div class="overlay overlay-dark">
@@ -133,24 +135,18 @@
 									</div>
 									<div class="ui-block-content thumb-nail-list">
 										<ul class="widget w-last-photo">
-											<li class="li-width " *ngFor="let item of imageList">
-												<div class="col col-12 p-0 m-0">
-
-
+											<li class="li-width " *ngFor="let item of imageList; index as i;">
+												<div class="col col-12 p-0 m-0 h-100">
 													<div class="image-delete">
-														
-														<img src="assets/testImg/post-photo3.jpg" alt="photo">
-														<a (click)="delete ()" type="button" class="btn btn-danger button-delete">
-															<i class="fal fa-trash-alt fa-2x" style="color: white; vertical-align: super;" ></i>
+														<img [src]="item" alt="photo">
+														<a (click)="delete (i)" type="button" class="btn btn-danger button-delete-sm px-0">
+															<i class="fal fa-trash-alt" style="color: white; vertical-align: super;" ></i>
 															<!-- ; margin-left: -3px; -->
 														</a>
 														<div class="overlay overlay-dark">
-															
 														</div>
-														
 													</div>
 												</div>
-
 											</li>
 
 											<li class="li-width" *ngIf="imageList.length < 10">
@@ -162,7 +158,7 @@
 															<a class="d-inline-block">Agregar Foto</a>
 														</div>
 													</div>
-													<input multiple hidden type="file" #fileInput name="file" accept="image/*" (click)="fileInput.value = null;" value="" (change)="getFile( $event );" />
+													<input multiple hidden type="file" #fileInput name="file" accept="image/*" (click)="fileInput.value = null;" value="" (change)="getFile( $event, 'list' );" />
 												</label>
 
 											</li>

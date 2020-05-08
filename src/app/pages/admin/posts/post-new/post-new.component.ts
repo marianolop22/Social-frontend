@@ -12,7 +12,7 @@ export class PostNewComponent implements OnInit {
 
 
   public mainImage: string|ArrayBuffer;
-  public imageList:Array<number>;
+  public imageList:Array<string|ArrayBuffer>;
 
   constructor() { }
 
@@ -21,7 +21,7 @@ export class PostNewComponent implements OnInit {
     CRUMINA.init_plugins();
     CRUMINA.init_lib_plugins();
 
-    this.imageList = [0,1,2,3,4,5,6,7];
+    this.imageList = new Array<string|ArrayBuffer>();
 
 
 
@@ -38,11 +38,11 @@ export class PostNewComponent implements OnInit {
     // }
 
 
-    this.getFile (event);
+    this.getFile (event, 'list');
   }
 
 
-  getFile ( event ) {
+  getFile ( event, from:string ) {
 
     console.log ('evento ', event);
 
@@ -79,7 +79,14 @@ export class PostNewComponent implements OnInit {
 
         reader.readAsDataURL(file);
         reader.onload = e => {
-          this.mainImage = reader.result;
+          if ( from == 'list' ) {
+
+            this.imageList.push (reader.result);
+          } else {
+
+            this.mainImage = reader.result;
+          }
+          
         }
 
 
@@ -147,8 +154,11 @@ export class PostNewComponent implements OnInit {
 
   }
 
-  delete () {
+  delete ( index: number) {
+
     console.log ('borro la imagen');
+
+    this.imageList.splice (index, 1);
   }
 
 
