@@ -5,7 +5,7 @@ import { Base } from "src/app/class/base.class";
 import { User } from "src/app/models/user.model";
 import { LoginService } from "src/app/services/login.service";
 
-import { FadeOut, FadeIn } from "src/app/animatios/animations";
+import { FadeOut, FadeIn } from "src/app/animations/animations";
 import { ErrorService } from 'src/app/services/error.service';
 
 declare var CRUMINA: any;

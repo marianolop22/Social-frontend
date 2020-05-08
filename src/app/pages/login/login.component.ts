@@ -8,7 +8,7 @@ import { Base } from "src/app/class/base.class";
 import { User } from 'src/app/models/user.model';
 
 
-import { FadeIn, FadeOut } from "src/app/animatios/animations";
+import { FadeIn, FadeOut } from "src/app/animations/animations";
 
 
 declare var CRUMINA:any; //  init_plugins();
