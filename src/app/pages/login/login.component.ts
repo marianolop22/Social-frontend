@@ -95,6 +95,7 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
 
   }
 
+  //test only
   show (f: NgForm) {
     console.log('hice click');
     //this.spin.next ( true );
