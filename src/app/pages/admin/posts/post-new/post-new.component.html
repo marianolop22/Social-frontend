@@ -1,10 +1,10 @@
 <div class="container">
-	<div class="row">
-		<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-			<div class="ui-block responsive-flex">
-				<div class="ui-block-title">
-					<div class="h6 title">Crear Noticia</div>
-					<!-- <div class="align-right">
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="ui-block responsive-flex">
+                <div class="ui-block-title">
+                    <div class="h6 title">Crear Noticia</div>
+                    <!-- <div class="align-right">
 						<form class="w-search">
 							<div class="form-group with-button">
 								<input class="form-control" type="text" placeholder="Filtro de Noticias...">
@@ -15,59 +15,57 @@
 						</form>
 						<button type="button" class="btn btn-blue" (click)="goToPage()">Crear Noticia <i class="fad fa-layer-plus"></i></button>
 					</div> -->
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <div class="container">
-	<div class="row">
-		<div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div class="row">
+        <div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 
-			<div class="ui-block">
-				<div class="ui-block-title bg-blue">
-					<h6 class="title c-white">Create a New Topic</h6>
-				</div>
-				<div class="ui-block-content">
-					
-					<form>
-						<div class="row">
+            <div class="ui-block">
+                <div class="ui-block-title bg-blue">
+                    <h6 class="title c-white">Nueva Noticia</h6>
+                </div>
+                <div class="ui-block-content">
 
-							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-								<div class="form-group label-floating is-select">
-									<label class="control-label">Tipo de Noticia</label>
-									<select class="selectpicker form-control">
-										<option value="TO">Texto Solo</option>
-										<option value="TI">Texto y 1 Imagen</option>
-										<option value="TV">Texto y 1 Video</option>
-										<option value="IT">Imagen y Texto</option>
-										<option value="TLI">Texto y Varias Imagenes</option>
+                    <form>
+                        <div class="row">
+
+                            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label">Template de Noticia</label>
+                                    <select *ngIf="templateList.length > 0" class="selectpicker form-control" [(ngModel)]="post.idTemplate" name="template" #template="ngModel" (ngModelChange)="setTemplate($event)" data-none-selected-text='Sin Eleccion'>
+										<option value="{{item.id}}" *ngFor="let item of templateList">{{item.name}}</option>
+										<!-- <option value="2">Texto y 1 Imagen</option>
+										<option value="3">Texto y 1 Video</option>
+										<option value="4">Imagen y Texto</option>
+										<option value="5">Texto y Varias Imagenes</option> -->
 									</select>
-								</div>
-							</div>
+                                </div>
+                            </div>
 
-							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-								<div class="form-group label-floating is-select">
-									<label class="control-label">Grupos de Distribución</label>
-									<select class="selectpicker form-control" multiple data-none-selected-text='Sin Eleccion'>
-										<option value="TO">Grupo 1</option>
-										<option value="TI">Grupo 2</option>
+                            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label">Grupos de Distribución</label>
+                                    <select *ngIf="distributionGroupList.length > 0" class="selectpicker form-control" [(ngModel)]="tmpDistributionGroup" name="groupDis" #groupDis="ngModel" multiple data-none-selected-text='Sin Eleccion' (ngModelChange)="setDistributionGroup($event)">
+										<option value="{{item.idGroup}}" *ngFor="let item of distributionGroupList">{{item.name}}</option>
+										<!-- <option value="TI">Grupo 2</option>
 										<option value="TV">Grupo 3</option>
-										<option value="IT">Grupo 4</option>
+										<option value="IT">Grupo 4</option> -->
 									</select>
-								</div>
-							</div>							
+                                </div>
+                            </div>
 
-							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div appDnd (fileDropped)="onFileDropped($event)" class="form-group friend-item friend-groups create-group main-image-size" data-mh="friend-groups-item" 
-									[ngClass]="{'uploadable-image':!mainImage, 'solid-border':mainImage }" 
-									[ngStyle]="{'height': !mainImage ? '381px' : '' }">
-									<!-- Este era el original [ngStyle]="{'padding-top': !mainImage ? '42.5%' : '0' } -->
-									<div class="content" *ngIf="!mainImage">
-										
-										<label class=" cPointer" >
+                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div appDnd (fileDropped)="onFileDropped($event)" class="form-group friend-item friend-groups create-group main-image-size" data-mh="friend-groups-item" [ngClass]="{'uploadable-image':!mainImage, 'solid-border':mainImage }" [ngStyle]="{'height': !mainImage ? '381px' : '' }">
+                                    <!-- Este era el original [ngStyle]="{'padding-top': !mainImage ? '42.5%' : '0' } -->
+                                    <div class="content" *ngIf="!mainImage">
+
+                                        <label class=" cPointer">
 											<div>
 												<a class="btn btn-control bg-blue mb-0">
 													<svg class="olymp-plus-icon"><use xlink:href="#olymp-plus-icon"></use></svg>
@@ -75,82 +73,82 @@
 												<input hidden type="file" #fileInputMain name="fileMain" accept="image/*" (click)="fileInputMain.value = null;" value="" (change)="getFile( $event, 'main' );"/>
 											</div>
 										</label>
-								
-										<div class="author-content">
-											<span class="h5 author-name">Imagen</span>
-											<div class="country">Imagen Superior</div>
-										</div>
-									</div>
 
-									<div class="image-delete" *ngIf="mainImage">
-										<img [src]="mainImage" alt="" width="100%">
-										<a (click)="delete (-1)" type="button" class="btn btn-danger button-delete">
-											<i class="fal fa-trash-alt fa-2x" style="color: white; vertical-align: super;" ></i>
-										</a>
-										<div class="overlay overlay-dark">
+                                        <div class="author-content">
+                                            <span class="h5 author-name">Imagen</span>
+                                            <div class="country">Imagen Superior</div>
+                                        </div>
+                                    </div>
 
-										</div>
-									</div>
-								</div>
-							</div>
+                                    <div class="image-delete" *ngIf="mainImage">
+                                        <img [src]="mainImage" alt="" width="100%">
+                                        <a (click)="delete (-1)" type="button" class="btn btn-danger button-delete">
+                                            <i class="fal fa-trash-alt fa-2x" style="color: white; vertical-align: super;"></i>
+                                        </a>
+                                        <div class="overlay overlay-dark">
 
-							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div class="form-group label-floating">
-									<label class="control-label">Titulo</label>
-									<input class="form-control" type="text" placeholder="" value="">
-								</div>
-							</div>
-			
-					
-							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div class="form-group label-floating">
-									<label class="control-label">Texto</label>
-									<textarea class="form-control" style="height: 240px" placeholder="" value=""></textarea>
-								</div>
-							</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-								<div class="form-group label-floating">
-									<label class="control-label">Link Video</label>
-									<input class="form-control" type="text" placeholder="" value="">
-								</div>
-							</div>							
-
-							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-								<div class="ui-block border-0">
-									<div class="ui-block-title border-0 pl-1 pt-0">
-										<label class="control-label">Agregar Imágenes:</label>
-										<!-- <h6 class="title title-image">Agregar Imágenes -->
+                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Titulo</label>
+                                    <input class="form-control" type="text" placeholder="" value="">
+                                </div>
+                            </div>
 
 
-											<!-- <label class="cPointer">
+                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Texto</label>
+                                    <textarea class="form-control" style="height: 240px" placeholder="" value=""></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Link Video</label>
+                                    <input class="form-control" type="text" placeholder="" value="">
+                                </div>
+                            </div>
+
+                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                <div class="ui-block border-0">
+                                    <div class="ui-block-title border-0 pl-1 pt-0">
+                                        <label class="control-label">Agregar Imágenes:</label>
+                                        <!-- <h6 class="title title-image">Agregar Imágenes -->
+
+
+                                        <!-- <label class="cPointer">
 												<div>
 													<i class="fad fa-plus-circle fa-lg" style="--fa-secondary-opacity: 1;--fa-primary-color: white; --fa-secondary-color: #38a9ff;"></i>
 													<input multiple hidden type="file" #fileInput name="file" accept="image/*" />
 												</div>
 											</label> -->
-										<!-- </h6> -->
+                                        <!-- </h6> -->
 
-									</div>
-									<div class="ui-block-content thumb-nail-list">
-										<ul class="widget w-last-photo">
-											<li class="li-width " *ngFor="let item of imageList; index as i;">
-												<div class="col col-12 p-0 m-0 h-100">
-													<div class="image-delete">
-														<img [src]="item" alt="photo">
-														<a (click)="delete (i)" type="button" class="btn btn-danger button-delete-sm px-0">
-															<i class="fal fa-trash-alt" style="color: white; vertical-align: super;" ></i>
-															<!-- ; margin-left: -3px; -->
-														</a>
-														<div class="overlay overlay-dark">
-														</div>
-													</div>
-												</div>
-											</li>
+                                    </div>
+                                    <div class="ui-block-content thumb-nail-list">
+                                        <ul class="widget w-last-photo">
+                                            <li class="li-width " *ngFor="let item of imageList; index as i;">
+                                                <div class="col col-12 p-0 m-0 h-100">
+                                                    <div class="image-delete">
+                                                        <img [src]="item" alt="photo">
+                                                        <a (click)="delete (i)" type="button" class="btn btn-danger button-delete-sm px-0">
+                                                            <i class="fal fa-trash-alt" style="color: white; vertical-align: super;"></i>
+                                                            <!-- ; margin-left: -3px; -->
+                                                        </a>
+                                                        <div class="overlay overlay-dark">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
 
-											<li class="li-width" *ngIf="imageList.length < 10">
-												<label appDnd (fileDropped)="onFileDropped($event)" class="cPointer" style="width: inherit;">
+                                            <li class="li-width" *ngIf="imageList.length < 10">
+                                                <label appDnd (fileDropped)="onFileDropped($event)" class="cPointer" style="width: inherit;">
 													<div class="thumb-nail-picture">
 														<div  class="thumb-nail-content" >
 															<i class="fad fa-plus-circle fa-lg d-inline-block" style="--fa-secondary-opacity: 1;--fa-primary-color: white; --fa-secondary-color: #38a9ff;"></i>
@@ -161,109 +159,108 @@
 													<input multiple hidden type="file" #fileInput name="file" accept="image/*" (click)="fileInput.value = null;" value="" (change)="getFile( $event, 'list' );" />
 												</label>
 
-											</li>
+                                            </li>
 
 
-										</ul>
-									</div>
-								</div>
-							</div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
 
-							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-								<a href="#" class="btn btn-secondary btn-lg full-width">Cancelar</a>
-							</div>
-					
-							<div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-								<a href="#" class="btn btn-blue btn-lg full-width">Guardar</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
+                            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <a href="#" class="btn btn-secondary btn-lg full-width">Cancelar</a>
+                            </div>
 
-		</div>
+                            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <a href="#" class="btn btn-blue btn-lg full-width">Guardar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-		<div class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-			<div class="ui-block">
-				<div class="ui-block-title">
-					<h6 class="title">Featured Topics</h6>
-				</div>
-				<div class="ui-block-content">
+        </div>
 
-					
-					
-					<ul class="widget w-featured-topics">
-						<li>
-							<i class="icon fa fa-star" aria-hidden="true"></i>
-							<div class="content">
-								<a href="#" class="h6 title">The new Goddess of War trailer was launched at E3!</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">2 hours, 16 minutes ago</time>
-							</div>
-						</li>
-						<li>
-							<i class="icon fa fa-star" aria-hidden="true"></i>
-							<div class="content">
-								<a href="#" class="h6 title">This year’s ComixCon will have the best presentations</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">14 hours, 36 minutes ago</time>
-							</div>
-						</li>
-						<li>
-							<i class="icon fa fa-star" aria-hidden="true"></i>
-							<div class="content">
-								<a href="#" class="h6 title">Here are the behind-the-scenes photos of “Vilords”</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">9 hours, 8 minutes ago</time>
-							</div>
-						</li>
-					</ul>
-					
-				</div>
-			</div>
+        <div class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Featured Topics</h6>
+                </div>
+                <div class="ui-block-content">
 
-			<div class="ui-block">
-				<div class="ui-block-title">
-					<h6 class="title">Recent Topics</h6>
-				</div>
-				<div class="ui-block-content">
 
-					
-					<!-- Widget Recent Topics -->
-					
-					<ul class="widget w-featured-topics">
-						<li>
-							<div class="content">
-								<a href="#" class="h6 title">Summer is Coming! Picnic in the east boulevard park</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">26 minutes ago</time>
-								<div class="forums">The Community</div>
-							</div>
-						</li>
-						<li>
-							<div class="content">
-								<a href="#" class="h6 title">Kung Fighters released a new video, check it out here!</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">44 minutes ago</time>
-								<div class="forums">The Boombox</div>
-							</div>
-						</li>
-						<li>
-							<div class="content">
-								<a href="#" class="h6 title">What’s your favourite season?</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">59 minutes ago</time>
-								<div class="forums">The Community</div>
-							</div>
-						</li>
-						<li>
-							<div class="content">
-								<a href="#" class="h6 title">Who had the best presentation at this year’s E3? Rate them!</a>
-								<time class="entry-date updated" datetime="2017-06-24T18:18">1 hour, 3 minutes ago</time>
-								<div class="forums">Arcade Planet</div>
-							</div>
-						</li>
-					</ul>
-					
-					<!-- ... end Widget Recent Topics -->
-				</div>
-			</div>
-		</div>
-	</div>
+
+                    <ul class="widget w-featured-topics">
+                        <li>
+                            <i class="icon fa fa-star" aria-hidden="true"></i>
+                            <div class="content">
+                                <a href="#" class="h6 title">The new Goddess of War trailer was launched at E3!</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">2 hours, 16 minutes ago</time>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="icon fa fa-star" aria-hidden="true"></i>
+                            <div class="content">
+                                <a href="#" class="h6 title">This year’s ComixCon will have the best presentations</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">14 hours, 36 minutes ago</time>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="icon fa fa-star" aria-hidden="true"></i>
+                            <div class="content">
+                                <a href="#" class="h6 title">Here are the behind-the-scenes photos of “Vilords”</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">9 hours, 8 minutes ago</time>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Recent Topics</h6>
+                </div>
+                <div class="ui-block-content">
+
+
+                    <!-- Widget Recent Topics -->
+
+                    <ul class="widget w-featured-topics">
+                        <li>
+                            <div class="content">
+                                <a href="#" class="h6 title">Summer is Coming! Picnic in the east boulevard park</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">26 minutes ago</time>
+                                <div class="forums">The Community</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <a href="#" class="h6 title">Kung Fighters released a new video, check it out here!</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">44 minutes ago</time>
+                                <div class="forums">The Boombox</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <a href="#" class="h6 title">What’s your favourite season?</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">59 minutes ago</time>
+                                <div class="forums">The Community</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <a href="#" class="h6 title">Who had the best presentation at this year’s E3? Rate them!</a>
+                                <time class="entry-date updated" datetime="2017-06-24T18:18">1 hour, 3 minutes ago</time>
+                                <div class="forums">Arcade Planet</div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- ... end Widget Recent Topics -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-

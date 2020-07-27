@@ -1,6 +1,6 @@
 export class Group {
 
-    idGroup: number;
+    idGroup: string;
     name: string;
     parent: number;
 

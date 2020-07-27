@@ -1,8 +1,10 @@
 import { Image  } from "./image.model";
+import { Group  } from "./group.model";
 
 export class Post {
 
-    style: number;
+    idTemplate: string;
+    id: string
     avatar: string;
     author: string;
     published: string;
@@ -11,5 +13,12 @@ export class Post {
     comments: number;
     shared: number;
     images: Array<Image>;
+    distributionGroup: Array<Group>;
+
+    constructor () {
+        this.images = new Array<Image>();
+        this.distributionGroup = new Array<Group>();
+
+    }
 
 }
