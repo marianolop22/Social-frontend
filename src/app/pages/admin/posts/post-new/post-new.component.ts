@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Template } from 'src/app/models/template.model';
+import { NewsService } from 'src/app/services/news.service';
+import { Post } from 'src/app/models/post.model';
+import { Group } from 'src/app/models/group.model';
+import { log } from 'util';
+import { forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 declare var CRUMINA:any; //  init_plugins();
@@ -13,18 +20,65 @@ export class PostNewComponent implements OnInit {
 
   public mainImage: string|ArrayBuffer;
   public imageList:Array<string|ArrayBuffer>;
+  public templateList: Array<Template> = new Array<Template> ();
+  public distributionGroupList: Array<Group> = new Array<Group> ();
+  public post: Post;
+  public tmpDistributionGroup: Array<string> = new Array<string>();
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(
+    private _news: NewsService
+  ) {
 
-    CRUMINA.init_plugins();
-    CRUMINA.init_lib_plugins();
+    this.post = new Post();
+    this.post.idTemplate = "1";
 
     this.imageList = new Array<string|ArrayBuffer>();
 
 
 
+
+
+
+
+    // this._news.getDistributionGroupList ().subscribe (
+    //   (response:any) => {
+    //     this.distributionGroupList = response;
+    //     console.log ( this.distributionGroupList );
+        
+    //   }
+    // );
+    // this._news.getTemplateList ().subscribe (
+    //   (response: Array <Template>) => {
+    //     this.templateList = response;
+    //     console.log ( this.templateList );
+        
+    //   }
+    // );
+
+
+  }
+
+  ngOnInit(): void {
+
+    forkJoin ([
+      this._news.getDistributionGroupList (),
+      this._news.getTemplateList ()
+    ]).subscribe (
+      response => {
+        console.log ( response);
+
+        this.distributionGroupList = response[0];
+        this.templateList = response[1];
+
+        CRUMINA.init_plugins();
+        CRUMINA.init_lib_plugins();
+      }
+    );
+    
+
+
+    
   }
 
   onFileDropped ( event ) {
@@ -159,6 +213,20 @@ export class PostNewComponent implements OnInit {
     console.log ('borro la imagen');
 
     this.imageList.splice (index, 1);
+  }
+
+  setTemplate (event) {
+    console.log( event );
+    console.log( this.post );
+    
+ 
+  }
+
+  setDistributionGroup (event) {
+    this.post.distributionGroup = new Array<Group>();
+    for ( let group of this.tmpDistributionGroup ) {
+      this.post.distributionGroup.push ( <Group>{idGroup: group, name:"" } );
+    }
   }
 
 

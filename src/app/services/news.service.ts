@@ -20,4 +20,11 @@ export class NewsService {
     return this.http.get ( 'assets/json/postList.json');
 
   }
+
+  public getTemplateList (): Observable<any> {
+    return this.http.get  ( 'assets/json/templateList.json');
+  }
+  public getDistributionGroupList (): Observable<any> {
+    return this.http.get  ( 'assets/json/distributionGroupList.json');
+  }
 }

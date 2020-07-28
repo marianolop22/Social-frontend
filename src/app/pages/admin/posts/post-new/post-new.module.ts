@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from "@angular/forms";
+
 
 import { PostNewComponent } from "./post-new.component";
 import { DirectivesModule } from "src/app/directives/directives.module";
@@ -19,7 +21,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    DirectivesModule
+    DirectivesModule,
+    FormsModule
   ],
   exports: [
     RouterModule
