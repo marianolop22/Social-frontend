@@ -1,85 +1,85 @@
-<ng-container [ngSwitch]="post.style">
+<ng-container [ngSwitch]="post.idTemplate">
 
     <!-- Estilo de texto unicamente-->
     <article class="hentry post has-post-thumbnail" *ngSwitchCase=1>
-					
-        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
-        
+
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published"></app-post-header>
+
         <app-post-text [text]="post.text"></app-post-text>
-    
+
         <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
-    
+
         <app-post-action-tools></app-post-action-tools>
-    
+
     </article>
 
 
-<!-- Estilo con texto y una imagen -->
-<article class="hentry post has-post-thumbnail" *ngSwitchCase=2>
-				
-    <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
+    <!-- Estilo con texto y una imagen -->
+    <article class="hentry post has-post-thumbnail" *ngSwitchCase=2>
 
-    <app-post-text [text]="post.text"></app-post-text>
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published"></app-post-header>
 
-    <app-post-image [image]="post.images[0]"></app-post-image>
-
-    <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
-
-    <app-post-action-tools></app-post-action-tools>
-
-</article>
-
-
-
-<!-- Estilo con texto y video-->
-    
-    <article class="hentry post video" *ngSwitchCase=3>
-    
-        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
-    
         <app-post-text [text]="post.text"></app-post-text>
-    
-        <app-post-video [video]="post.images[0]" ></app-post-video>
-    
-        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
-    
-        <app-post-action-tools></app-post-action-tools>
-    
-    </article>
-    
-<!-- Estilo con imagen de cabecera y texto-->
-    <article class="hentry post has-post-thumbnail thumb-full-width" *ngSwitchCase=4>
-				
-        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
-    
+
         <app-post-image [image]="post.images[0]"></app-post-image>
 
-    
-        <!-- <a href="#" class="h2 post-title">My Perfect Vacations in South America and Europe</a> -->
-    
-        <app-post-text [text]="post.text"></app-post-text>
-    
-        <a href="#" data-toggle="modal" data-target="#blog-post-popup" class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Read More</a>
-    
         <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
-    
+
         <app-post-action-tools></app-post-action-tools>
-    
+
     </article>
-    
-<!--Estilo con lista de imagenes-->
-    <article class="hentry post" *ngSwitchCase=5>
-				
-        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published" ></app-post-header>
-    
+
+
+
+    <!-- Estilo con texto y video-->
+
+    <article class="hentry post video" *ngSwitchCase=3>
+
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published"></app-post-header>
+
         <app-post-text [text]="post.text"></app-post-text>
-    
-        <app-post-image-list [imageList]="post.images"></app-post-image-list>
-    
+
+        <app-post-video [video]="post.images[0]"></app-post-video>
+
         <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
-    
+
         <app-post-action-tools></app-post-action-tools>
-    
+
+    </article>
+
+    <!-- Estilo con imagen de cabecera y texto-->
+    <article class="hentry post has-post-thumbnail thumb-full-width" *ngSwitchCase=4>
+
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published"></app-post-header>
+
+        <app-post-image [image]="post.images[0]"></app-post-image>
+
+
+        <!-- <a href="#" class="h2 post-title">My Perfect Vacations in South America and Europe</a> -->
+
+        <app-post-text [text]="post.text"></app-post-text>
+
+        <a href="#" data-toggle="modal" data-target="#blog-post-popup" class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Read More</a>
+
+        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
+
+        <app-post-action-tools></app-post-action-tools>
+
+    </article>
+
+    <!--Estilo con lista de imagenes-->
+    <article class="hentry post" *ngSwitchCase=5>
+
+        <app-post-header [avatar]="post.avatar" [author]="post.author" [published]="post.published"></app-post-header>
+
+        <app-post-text [text]="post.text"></app-post-text>
+
+        <app-post-image-list [imageList]="post.images"></app-post-image-list>
+
+        <app-post-footer [likes]="post.likes" [comments]="post.comments" [shared]="post.shared"></app-post-footer>
+
+        <app-post-action-tools></app-post-action-tools>
+
     </article>
 
 
@@ -89,5 +89,3 @@
 
 
 </ng-container>
-
-

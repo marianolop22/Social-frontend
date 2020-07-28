@@ -8,7 +8,7 @@ import { Base } from "src/app/class/base.class";
 import { User } from 'src/app/models/user.model';
 
 
-import { FadeIn, FadeOut } from "src/app/animatios/animations";
+import { FadeIn, FadeOut } from "src/app/animations/animations";
 
 
 declare var CRUMINA:any; //  init_plugins();
@@ -63,25 +63,39 @@ export class LoginComponent extends Base implements OnInit, OnDestroy {
 
   public login ( f: NgForm) {
 
-    if ( f.valid ) {
-      this.busy();
+    let user = new User();
+  
+    user.name = 'prueba';
+    user.surname = 'apellido';
+    user.fileNumber = '123456';
+    user.roles = [
+      { idUserRol: 1, description:'unrol', code: 'description' }
+    ]
+
+    this._user.setUser ( user );
+    this.router.navigate (['home']);
+    sessionStorage.setItem ('token',"123455");
+
+    // if ( f.valid ) {
+    //   this.busy();
 
         
-        this._login.login ( this.user ).subscribe (
-          response => {
-            this._user.setUser ( response.entity );
-            this.router.navigate (['home']);
+    //     this._login.login ( this.user ).subscribe (
+    //       response => {
+    //         this._user.setUser ( response.entity );
+    //         this.router.navigate (['home']);
   
-          }
-        ).add ( () => { 
+    //       }
+    //     ).add ( () => { 
           
-          this.notBusy();
-        });
+    //       this.notBusy();
+    //     });
 
-    }
+    // }
 
   }
 
+  //test only
   show (f: NgForm) {
     console.log('hice click');
     //this.spin.next ( true );

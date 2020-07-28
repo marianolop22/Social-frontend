@@ -26,36 +26,33 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     let accessToken:string = null;
     let hasRole: boolean = false;
 
+    return true;
 
-    if ( sessionStorage.getItem ( 'token' ) ){
-      accessToken = sessionStorage.getItem ( 'token' );
+    // if ( sessionStorage.getItem ( 'token' ) ){
+    //   accessToken = sessionStorage.getItem ( 'token' );
 
-      //decodifico el token, saco la lista de roles y verifico si posee el rol necesario
-      let tmp:Array<Role> = JSON.parse ( ( jwtHelper.decodeToken ( accessToken ) ).autorized );
-      hasRole = tmp.find ( item => item.code == next.data.roles ) ? true: false;
-    }
+    //   //decodifico el token, saco la lista de roles y verifico si posee el rol necesario
+    //   let tmp:Array<Role> = JSON.parse ( ( jwtHelper.decodeToken ( accessToken ) ).autorized );
+    //   hasRole = tmp.find ( item => item.code == next.data.roles ) ? true: false;
+    // }
 
-    if ( accessToken && !jwtHelper.isTokenExpired( accessToken ) ) { //&& sessionStorage.getItem ( 'employee' ) && !jwtHelper.isTokenExpired( accessToken ) ) {
-      if ( hasRole ) {
-        return true;
-      } else {
-        sessionStorage.clear();
-        this.router.navigate( ['ingreso'] );
-        alert ( "No tenes permiso para ingresar a esta página" );
-        return false;
-      }
+    // if ( accessToken && !jwtHelper.isTokenExpired( accessToken ) ) { //&& sessionStorage.getItem ( 'employee' ) && !jwtHelper.isTokenExpired( accessToken ) ) {
+    //   if ( hasRole ) {
+    //     return true;
+    //   } else {
+    //     sessionStorage.clear();
+    //     this.router.navigate( ['ingreso'] );
+    //     alert ( "No tenes permiso para ingresar a esta página" );
+    //     return false;
+    //   }
 
-    } else {
-      alert ( "Debes loguearte o tu sesión ha expirado" );
-      sessionStorage.clear();
-      // if ( state.url.indexOf ('/principal/noticias/ver' ) > -1 )
-      // {
-      //   sessionStorage.setItem ( 'redirect', state.url );
-      // }
+    // } else {
+    //   alert ( "Debes loguearte o tu sesión ha expirado" );
+    //   sessionStorage.clear();
 
-      this.router.navigate( ['ingreso'] );
-      return false;
-    }
+    //   this.router.navigate( ['ingreso'] );
+    //   return false;
+    // }
   }
 
   canActivateChild ( next:ActivatedRouteSnapshot, state:RouterStateSnapshot ):Observable<boolean> | Promise<boolean> | boolean {

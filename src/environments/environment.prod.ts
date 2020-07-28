@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlApi: 'http://api.micolegio.com.ar:8080/Social/rest/v1'
+  urlApi: 'https://api.micolegio.com.ar/backend/rest/v1'
 };
